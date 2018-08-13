@@ -3,6 +3,7 @@ package com.song.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Date;
@@ -62,7 +63,7 @@ public class JWTUtil {
         try{
             DecodedJWT jwt = JWT.decode(token);
             return jwt.getClaim("username").asString();
-        }catch(Exception e){
+        }catch(JWTDecodeException e){
             return null;
         }
     }
