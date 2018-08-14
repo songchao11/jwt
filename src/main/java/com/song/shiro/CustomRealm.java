@@ -57,7 +57,7 @@ public class CustomRealm extends AuthorizingRealm {
 
         //设置该用户拥有的角色和权限
         info.setRoles(set);
-        info.setStringPermissions(set);
+//        info.setStringPermissions(set);
         return info;
     }
 
