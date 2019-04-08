@@ -9,6 +9,8 @@ import com.song.dto.response.TokenResultDto;
 import com.song.dto.response.UserResultDto;
 import com.song.enums.UCenterResultEnum;
 import com.song.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.crypto.RandomNumberGenerator;
@@ -20,12 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by song on 2018/8/10.
  */
+@Api(value = "用户接口", description = "用户接口")
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    @ApiOperation(value = "用户登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ObjectResultDto<TokenResultDto> login(LoginRequestDto requestDto){
         ObjectResultDto objectResultDto = new ObjectResultDto();
@@ -46,6 +50,7 @@ public class UserController {
         return objectResultDto.success();
     }
 
+    @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public ResultDto signup(SignUpRequestDto requestDto){
         ResultDto resultDto = new ResultDto();
